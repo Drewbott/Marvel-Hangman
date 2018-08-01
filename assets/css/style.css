@@ -1,0 +1,38 @@
+body {
+    background-image: url("../images/wallpaper.jpg");
+
+}
+.container {
+    text-align: center;
+}
+
+#logo {
+    width: 250px;
+    /* float: left; */
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#masthead {
+    width: 100%;
+    background-color: white;
+
+    
+}
+
+.name {
+    font-family: 'Bangers', cursive;
+    width: 100%;
+    /* float: left; */
+    font-size: 36px;
+    text-align: center;
+
+
+}
+
+.instructions {
+    font-family: 'Bangers', cursive;
+    color: cornflowerblue;
+    
+}
