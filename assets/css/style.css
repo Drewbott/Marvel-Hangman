@@ -17,6 +17,7 @@ body {
 #masthead {
     width: 100%;
     background-color: white;
+    opacity: 0.75;
 
     
 }
@@ -25,7 +26,7 @@ body {
     font-family: 'Bangers', cursive;
     width: 100%;
     /* float: left; */
-    font-size: 36px;
+    font-size: 42px;
     text-align: center;
 
 
@@ -51,9 +52,14 @@ body {
     width: 100%;
     margin: 0 auto;
     text-align: center;
+    opacity: 0.85;
 
 
 }
 .letters {
-    padding-top: 20px;
+    padding: 20px;
+}
+
+.jumbotron {
+    opacity: 0.85;
 }

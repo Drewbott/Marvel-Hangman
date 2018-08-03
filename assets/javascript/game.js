@@ -25,23 +25,52 @@ var words = [
 "colossus",
 "redskull",
 ];
+var wins = 0;
 var wrongLetters = [];
-var lives = 8;
+var maxLives = 8;
+var lives = maxLives;
 var word = words[Math.floor(Math.random() * words.length)];
+var puzzle = document.getElementById("puzzle")
+var livesElem = document.getElementById("remaining")
+var winsElem = document.getElementById("wins")
+var wrongLettersElem = document.getElementById("incorrect")
+var answerArray = [];
 
+for (var i = 0; i < word.length; i++) {
+    answerArray[i] = "_";
+}
+
+var remainingLetters = word.length;
+
+
+function update(wins, lives, wrongLetters){
+    livesElem.innerHTML = lives;
+    winsElem.innerHTML = wins;
+    wrongLettersElem.textContent = wrongLetters.join(" ");
+    puzzle.textContent = answerArray.join(" ");
+}
+
+function reset(){
+lives = maxLives;
+wrongLetters = [];
+answerArray = [];
+word = words[Math.floor(Math.random() * words.length)];
+for (var i = 0; i < word.length; i++) {
+    answerArray[i] = "_";
+}
+remainingLetters = word.length;
+
+}
+
+// alert("Try to guess the character.")
 // While the word has not yet been guessed {
 
-    var answerArray = [];
-    for (var i = 0; i < word.length; i++) {
-        answerArray[i] = "_";
-    }
-
-    var remainingLetters = word.length;
+    
+    
 
     // while (remainingLetters > 0) {
     // Show the player their current progress
-    var puzzle = document.getElementById("puzzle");
-
+    
     // puzzle.textContent = answerArray.join(" ");
     // alert(answerArray.join(" "));
   
@@ -50,33 +79,39 @@ var word = words[Math.floor(Math.random() * words.length)];
     document.onkeyup = function(event) {
         var guess = event.key;
         var goodGuess = false
-            for (var j=0; j < word.length; j++){
-                if (word[j] === guess) {
+        for (var j=0; j < word.length; j++){
+            if (word[j] === guess) {
                     answerArray[j] = guess;
                     remainingLetters--;
                     goodGuess = true;
-                }
             }
-            if (!goodGuess){
-                wrongLetters.push(guess); 
-                lives--;
-            }
-            
-            puzzle.textContent = answerArray.join(" ");
-            incorrect.textContent = wrongLetters.join(" ");
+        }
+        if (!goodGuess){
+            wrongLetters.push(guess); 
+            lives--;
+            update(wins, lives, wrongLetters)
+        }
 
          if (remainingLetters === 0){
-        setTimeout(win, 500)
+            wins ++ 
+            setTimeout(win, 500)
+            
+        }
+        if (lives === 0){
+            setTimeout(lose, 500)
+        }
+        update(wins, lives, wrongLetters)
     }
-    if (lives === 0){
-        setTimeout(lose, 500)
-        
-    }
-    }
-    function win() {
-        alert("You Win!")
-    }
+
+
+function win() {
+    alert("You Win!")
+    reset()
+    update(wins, lives, wrongLetters)
+}
     function lose() {
+        reset()
+        update(wins, lives, wrongLetters)
         alert("You Lose!")
     }
 
