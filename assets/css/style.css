@@ -6,20 +6,19 @@ body {
     text-align: center;
 }
 
+#masthead {
+    width: 100%;
+    background-color: #e9ecef;
+    opacity: 0.80;
+  
+}
 #logo {
     width: 250px;
     /* float: left; */
     margin-left: auto;
     margin-right: auto;
     display: block;
-}
-
-#masthead {
-    width: 100%;
-    background-color: white;
-    opacity: 0.75;
-
-    
+    opacity: 1;
 }
 
 .name {
@@ -48,18 +47,22 @@ body {
 
 .info {
     font-family: 'Bangers', cursive;
-    background-color: lightgrey;
+    background-color: #e9ecef;
     width: 100%;
     margin: 0 auto;
     text-align: center;
-    opacity: 0.85;
+    opacity: 0.80;
 
 
 }
-.letters {
+/* .letters {
     padding: 20px;
-}
+} */
 
 .jumbotron {
-    opacity: 0.85;
+    opacity: 0.80;
+}
+
+#game {
+    margin-bottom: 10px;
 }

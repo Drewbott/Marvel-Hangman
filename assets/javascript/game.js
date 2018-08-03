@@ -24,7 +24,21 @@ var words = [
 "storm",
 "colossus",
 "redskull",
+"deadpool",
+"thanos",
+"loki",
+"juggernaut",
+"gamora",
+"bullseye",
+"elektra",
+"starlord",
+"groot",
+"antman",
+"wasp",
+"iceman",
+"vision",
 ];
+
 var wins = 0;
 var wrongLetters = [];
 var maxLives = 8;
