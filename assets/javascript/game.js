@@ -10,7 +10,7 @@
 
 // Pick a random Word
 var words = [
-"wolverive",
+"wolverine",
 "daredevil",
 "hulk",
 "thor",
@@ -25,8 +25,8 @@ var words = [
 "colossus",
 "redskull",
 ];
-
-var win = 0
+var wrongLetters = [];
+var lives = 8;
 var word = words[Math.floor(Math.random() * words.length)];
 
 // While the word has not yet been guessed {
@@ -49,22 +49,37 @@ var word = words[Math.floor(Math.random() * words.length)];
 
     document.onkeyup = function(event) {
         var guess = event.key;
-        // if (guess === null) {
-        //     break;
-        // } else if (guess.length !== 1) {
-        //     alert("Please enter a single letter.");
-        // }else {
+        var goodGuess = false
             for (var j=0; j < word.length; j++){
                 if (word[j] === guess) {
                     answerArray[j] = guess;
                     remainingLetters--;
-                }
+                    goodGuess = true;
                 }
             }
-        // }
-        puzzle.textContent = answerArray.join(" ");
-    
-// Create a counter that counts up when the word is guessed
+            if (!goodGuess){
+                wrongLetters.push(guess); 
+                lives--;
+            }
+            
+            puzzle.textContent = answerArray.join(" ");
+            incorrect.textContent = wrongLetters.join(" ");
+
+         if (remainingLetters === 0){
+        setTimeout(win, 500)
+    }
+    if (lives === 0){
+        setTimeout(lose, 500)
+        
+    }
+    }
+    function win() {
+        alert("You Win!")
+    }
+    function lose() {
+        alert("You Lose!")
+    }
+
     
 
     // var guess = prompt("Guess a letter, or click cancel to quit.");
